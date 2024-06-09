@@ -122,6 +122,15 @@ impl Nuclide for StableNuclide
 //     println!("Activity of {} is {} ", nuclide.name, nuclide. get_activity(time));
 // }
 
+fn new<T: Nuclide>(name: String, half_life: f64, activity: f64)->T
+{
+    T::new(name, half_life, activity)
+}
+
+// fn new(name: String, half_life: f64, activity: f64)->dyn Nuclide
+// {
+//     Nuclide(name, half_life, activity);
+// }
 
 
 fn main() {
@@ -129,8 +138,9 @@ fn main() {
 
     // let cs_137=new1(String::from("Cs-137"), 30.0, 50.0);
     // let ba_137m=RadioNuclide {name: String::from("Ba-137m"), half_life: 2.55, activity: 100.0,};
-    let ba_137=StableNuclide {name: String::from("Ba-137"), half_life: 0.0, activity: 100.0,};
-
+    // let ba_137=StableNuclide {name: String::from("Ba-137"), half_life: 0.0, activity: 100.0,};
+    // let ba_137=StableNuclide::new(String::from("Ba-137"), 0.0, 100.0);
+    let ba_137=new::<StableNuclide>(String::from("Ba-137"), 0.0, 100.0);
 
     // get_activity(&cs_137, 10.0);
     // get_activity(&ba_137m, 100.0);
