@@ -9,7 +9,7 @@ trait Nuclide
 
     fn print_activity(&self, time: f64);
 
-    // fn new()->Self;
+    fn new(&self);//->Self;
 }
 
 struct StableNuclide
@@ -32,6 +32,10 @@ impl Nuclide for StableNuclide
     // {
     // 	StableNuclide{name, half_life, activity}
     // }
+    fn new(&self)
+    {
+
+    }
 
     fn exp_law(&self, _time: f64)->f64
     {
@@ -51,6 +55,11 @@ impl Nuclide for StableNuclide
 
 impl Nuclide for RadioNuclide
 {
+    fn new(&self)
+    {
+
+    }
+
     fn exp_law(&self, time: f64)->f64
     {
 	let a: f64=-f64::consts::LN_2*time/self.half_life;
