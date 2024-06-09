@@ -6,6 +6,7 @@ pub trait Nuclide
     {
 	0.0.to_owned()
     }
+
     fn print_activity(&self, time: f64);
     // fn new(name: String, half_life: f64, activity: f64)->Self;
 }

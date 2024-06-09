@@ -1,4 +1,5 @@
 mod nuclide;
+mod decay;
 use crate::nuclide::Nuclide;
 use crate::nuclide::StableNuclide;
 use crate::nuclide::RadioNuclide;
