@@ -1,5 +1,7 @@
 use crate::nuclide::Nuclide;
+use crate::nuclide::NuclideType;
 use crate::nuclide::RadioNuclide;
+use crate::nuclide::RadioNuclide1;
 // use crate::nuclide::get_activity;
 
 // pub trait Particle
@@ -24,14 +26,27 @@ pub trait Decay1
 }
 
 
-enum DecayType
+pub enum DecayType
 {
-    BetaDecay,
+    BetaDecayTest,
 }
 
 pub struct Decay
 {
     decay: DecayType,
+}
+fn test()
+{
+    let beta_decay=Decay{decay: DecayType::BetaDecayTest};
+}
+
+pub struct BetaDecayTest
+{
+    pub probability: f32,
+    // pub parent: RadioNuclide1,
+    pub parent: NuclideType,
+    pub daughter: NuclideType,
+    // pub electron: Electron
 }
 
 pub struct BetaDecay<'a>

@@ -1,13 +1,24 @@
 mod nuclide;
 mod decay;
 // // use crate::nuclide::Nuclide;
-// // use crate::nuclide::StableNuclide;
+use crate::nuclide::StableNuclide;
 // use crate::nuclide::RadioNuclide;
 // // use crate::nuclide::get_activity;
 // use crate::decay::BetaDecay;
+use crate::decay::BetaDecayTest;
+use crate::nuclide::NuclideType;
+use crate::nuclide::RadioNuclide1;
 
 fn main() {
     println!("Hello, world!");
+    let cs_137=RadioNuclide1{name: String::from("Cs-137"), half_life: 30.2, activity: 100.0};
+    let ba_137=StableNuclide{name: String::from("Ba-137")};
+    let parent1=NuclideType::RadioNuclideType(cs_137);
+    let daughter1=NuclideType::StableNuclideType(ba_137);
+    let decay1=BetaDecayTest{probability: 0.053, parent: parent1, daughter: daughter1};
+
+    // let cs_137=RadioNuclide1{name: String::from("Cs-137"), half_life: 30.2, activity: 100.0};
+
     // let beta_decay: BetaDecay;
     // let cs_137=RadioNuclide{name: String::from("Cs-137"), half_life: 30.2, activity: 100.0, decay: &beta_decay};
     // let cs_137=RadioNuclide{name: String::from("Cs-137"), half_life: 30.2, activity: 100.0};
