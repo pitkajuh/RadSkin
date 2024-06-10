@@ -1,4 +1,6 @@
 use core::f64;
+use crate::decay::Decay1;
+// use crate::decay::BetaDecay;
 
 pub trait Nuclide
 {
@@ -8,14 +10,17 @@ pub trait Nuclide
     }
 
     fn print_activity(&self, time: f64);
+    // fn default()->Self;
     // fn new(name: String, half_life: f64, activity: f64)->Self;
 }
 
-pub struct RadioNuclide
+
+pub struct RadioNuclide<'a>
 {
     pub name: String,
     pub half_life: f64,
     pub activity: f64,
+    pub decay: &'a dyn Decay1
 }
 
 pub struct StableNuclide
@@ -43,8 +48,12 @@ impl Nuclide for StableNuclide
     }
 }
 
-impl Nuclide for RadioNuclide
+impl <'a> Nuclide for RadioNuclide<'a>
 {
+    // fn default()->Self
+    // {
+    // 	Self{name, half_life, activity, decay: Decay}
+    // }
     // fn new(name: String, half_life: f64, activity: f64)->Self
     // {
     // 	Self{name, half_life, activity}
