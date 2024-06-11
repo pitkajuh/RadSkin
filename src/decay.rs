@@ -1,84 +1,35 @@
-// use crate::nuclide::Nuclide;
+use core::f32;
 use crate::nuclide::NuclideType;
-// use crate::nuclide::RadioNuclide;
-// use crate::nuclide::RadioNuclide1;
-// use crate::nuclide::get_activity;
-
-// pub trait Particle
-// {
-
-// }
-
-pub struct Electron
-{
-    pub energy: f64,
-}
-
-pub struct Gamma
-{
-    pub energy: f64,
-}
 
 pub enum DecayType<'a>
 {
-    BetaDecayTestType(BetaDecayTest<'a>),
+    BetaDecayType(BetaDecay<'a>),
     InternalConversionType(InternalConversion<'a>),
+}
+
+fn exp_decay(activity: f32, half_life: f32, time: f32)->f32
+{
+    let a: f32=-f32::consts::LN_2*time/half_life;
+    activity*a.exp()
 }
 
 pub struct DecayScheme<'a>
 {
+    pub activity: f32,
     pub decays: Vec<DecayType<'a>>,
-    // pub activity: f64,
-    // Total activity
-    // Total energy of the decay in MeVs
-
+    // Return total energy of all decays in MeVs
 }
 
 pub struct InternalConversion<'a>
 {
     pub probability: f32,
-    // pub parent: RadioNuclide1,
     pub parent: &'a NuclideType,
     pub daughter: &'a NuclideType,
-    // pub electron: Electron
 }
 
-pub struct BetaDecayTest<'a>
+pub struct BetaDecay<'a>
 {
     pub probability: f32,
-    // pub parent: RadioNuclide1,
     pub parent: &'a NuclideType,
     pub daughter: &'a NuclideType,
-    // pub electron: Electron
 }
-
-// pub struct BetaDecay<'a>
-// {
-//     pub parent_nuclide: RadioNuclide<'a>,
-//     pub daughter_nuclide: Vec<&'a dyn Nuclide>,
-//     pub electron: Vec<Electron>
-// }
-
-// pub struct BetaDecay<'a>
-// {
-//     pub parent_nuclide: RadioNuclide<'a>,
-//     pub daughter_nuclide: Vec<&'a dyn Nuclide>,
-//     pub electron: Vec<Electron>
-// }
-
-// pub struct DecayScheme
-// {
-
-
-// }
-
-// pub fn beta_decay(parent: RadioNuclide)
-// {
-
-// }
-
-// pub fn new_decay(parent: &dyn Nuclide)
-// {
-// // If parent is RadioNuclide, calculate decay, otherwise skip.
-
-// }
