@@ -1,6 +1,6 @@
 use core::f64;
 // use crate::decay::Decay1;
-use crate::decay::DecayType;
+// use crate::decay::DecayType;
 // use crate::decay::BetaDecay;
 
 pub trait Nuclide

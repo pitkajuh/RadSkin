@@ -1,7 +1,7 @@
-use crate::nuclide::Nuclide;
+// use crate::nuclide::Nuclide;
 use crate::nuclide::NuclideType;
 // use crate::nuclide::RadioNuclide;
-use crate::nuclide::RadioNuclide1;
+// use crate::nuclide::RadioNuclide1;
 // use crate::nuclide::get_activity;
 
 // pub trait Particle
@@ -19,15 +19,15 @@ pub struct Gamma
     pub energy: f64,
 }
 
-pub enum DecayType
+pub enum DecayType<'a>
 {
-    BetaDecayTest,
-    InternalConversion,
+    BetaDecayTestType(BetaDecayTest<'a>),
+    InternalConversionType(InternalConversion<'a>),
 }
 
-pub struct DecayScheme
+pub struct DecayScheme<'a>
 {
-    pub decays: Vec<DecayType>,
+    pub decays: Vec<DecayType<'a>>,
     // pub activity: f64,
     // Total activity
     // Total energy of the decay in MeVs
@@ -38,7 +38,7 @@ pub struct InternalConversion<'a>
 {
     pub probability: f32,
     // pub parent: RadioNuclide1,
-    pub parent: NuclideType,
+    pub parent: &'a NuclideType,
     pub daughter: &'a NuclideType,
     // pub electron: Electron
 }
@@ -47,7 +47,7 @@ pub struct BetaDecayTest<'a>
 {
     pub probability: f32,
     // pub parent: RadioNuclide1,
-    pub parent: NuclideType,
+    pub parent: &'a NuclideType,
     pub daughter: &'a NuclideType,
     // pub electron: Electron
 }
