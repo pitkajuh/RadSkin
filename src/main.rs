@@ -27,6 +27,7 @@ fn main() {
 
     let decay1=BetaDecay{
 	probability: 0.054,
+	energy: 1174.0,
 	parent: &cs_137,
 	daughter: &daughter1};
     // let decay2=BetaDecay{probability: 0.946, parent: &cs_137, daughter: &daughter1};
