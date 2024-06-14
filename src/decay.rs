@@ -14,8 +14,9 @@ fn exp_decay(activity: f32, half_life: f32, time: f32) -> f32 {
 }
 
 pub struct DecayScheme<'a> {
+    pub parent_name: String,
     pub activity: f32,
-    pub decays: Vec<DecayType<'a>>,
+    pub decays: DecayType<'a>,
     // Return total energy of all decays in MeVs
 }
 
@@ -32,12 +33,12 @@ pub struct BetaDecay<'a> {
     pub daughter: &'a NuclideType
 }
 
-trait GetParent {
+trait GetNuclide {
     fn get_parent(&self) -> &RadioNuclide;
     fn get_daughter(&self) -> &NuclideType;
 }
 
-impl <'a>GetParent for BetaDecay<'a> {
+impl <'a>GetNuclide for BetaDecay<'a> {
     fn get_parent(&self) -> &RadioNuclide {
 	&*self.parent
     }
@@ -47,7 +48,7 @@ impl <'a>GetParent for BetaDecay<'a> {
     }
 }
 
-// impl <'a>GetParent for InternalConversion<'a> {
+// impl <'a>GetNuclide for InternalConversion<'a> {
 //     fn get_parent(&self) -> &RadioNuclide {
 // 	&*self.parent
 //     }
