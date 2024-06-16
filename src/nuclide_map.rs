@@ -4,13 +4,8 @@ use crate::nuclide::RadioNuclide;
 use crate::nuclide::StableNuclide;
 use crate::decay::DecayScheme;
 
-use crate::nuclide::NuclideType1;
-// use crate::nuclide::RadioNuclideType1;
-
 pub fn get_from_nuclide_map(name: String)
 {
-    let ba=NuclideType1::RadioNuclideType1(String::from("test"), 30.2);
-    println!("aoe {}", ba.half_life);
     let ba_137=NuclideType::StableNuclideType(StableNuclide {
 	name: String::from("Ba-137")});
     let ba_137m=NuclideType::RadioNuclideType(RadioNuclide {
